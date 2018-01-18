@@ -11,9 +11,10 @@ using VlackApi.Models;
 namespace vlackapi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20180118224857_ChangeDateTimeInMessage")]
+    partial class ChangeDateTimeInMessage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

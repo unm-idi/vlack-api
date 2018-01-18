@@ -1,3 +1,5 @@
+using System;
+
 namespace VlackApi.Models
 {
   public class Message
@@ -5,5 +7,7 @@ namespace VlackApi.Models
     public long Id { get; set; }
     public string body { get; set; }
     public long ChannelId { get; set; }
+    public string CreatedAt { get; set; }
+    public string User { get; set; }
   }
 }

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using VlackApi.Models;
 using Microsoft.AspNetCore.Cors;
 using VlackApi.SignalR;
+using Npgsql;
 
 namespace VlackApi
 {
@@ -30,7 +31,8 @@ namespace VlackApi
             services.AddCors();
             services.AddMvc();
             services.AddSignalR();
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("DataSource=Vlack.db"));
+            // services.AddDbContext<ApplicationContext>(options => options.UseSqlite("DataSource=Vlack.db"));
+            services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

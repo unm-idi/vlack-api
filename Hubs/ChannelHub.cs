@@ -16,7 +16,6 @@ namespace VlackApi.SignalR
     {
       Clients.All.InvokeAsync("broadcastMessage", name, message);
     }
-
     public void Double(string name, string message)
     {
       Clients.All.InvokeAsync("broadcastMessage", name, $"{message} {message}");

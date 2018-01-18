@@ -11,9 +11,10 @@ using VlackApi.Models;
 namespace vlackapi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20180117205052_DateTimeAndPassword")]
+    partial class DateTimeAndPassword
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +40,9 @@ namespace vlackapi.Migrations
 
                     b.Property<long>("ChannelId");
 
-                    b.Property<string>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("User");
+                    b.Property<long>("UserId");
 
                     b.Property<string>("body");
 
@@ -49,14 +50,35 @@ namespace vlackapi.Migrations
 
                     b.HasIndex("ChannelId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Message");
+                });
+
+            modelBuilder.Entity("VlackApi.Models.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("VlackApi.Models.Message", b =>
                 {
-                    b.HasOne("VlackApi.Models.Channel")
+                    b.HasOne("VlackApi.Models.Channel", "Channel")
                         .WithMany("Messages")
                         .HasForeignKey("ChannelId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("VlackApi.Models.User", "User")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

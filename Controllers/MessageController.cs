@@ -4,6 +4,7 @@ using VlackApi.Models;
 using System.Linq;
 using Microsoft.AspNetCore.SignalR;
 using VlackApi.SignalR;
+using System;
 
 namespace VlackApi.Controllers
 {
@@ -43,13 +44,50 @@ namespace VlackApi.Controllers
       {
         return BadRequest();
       }
+      
+      c.CreatedAt = DateTime.Now.ToString("ddd h:mm tt");
 
       _messageContext.Messages.Add(c);
       _messageContext.SaveChanges();
 
-      _hubContext.Clients.Group($"channel{c.ChannelId}").InvokeAsync("broadcastMessage", "hi", c.body);
+      _hubContext.Clients.Group($"channel{c.ChannelId}").InvokeAsync("broadcastMessage", "hi", c);
 
       return CreatedAtRoute("GetMessage", new { id = c.Id }, c);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(long id)
+    {
+      var Message = _messageContext.Messages.FirstOrDefault(t => t.Id == id);
+      if (Message == null)
+      {
+        return NotFound();
+      }
+
+      _messageContext.Messages.Remove(Message);
+      _messageContext.SaveChanges();
+      return new NoContentResult();
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Update(long id, [FromBody] Message c)
+    {
+      if (c == null || c.Id != id)
+      {
+        return BadRequest();
+      }
+
+      var Message = _messageContext.Messages.FirstOrDefault(t => t.Id == id);
+      if (Message == null)
+      {
+        return NotFound();
+      }
+
+      Message.body = c.body;
+
+      _messageContext.Messages.Update(Message);
+      _messageContext.SaveChanges();
+      return new NoContentResult();
     }
   }
   

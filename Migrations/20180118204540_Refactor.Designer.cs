@@ -11,9 +11,10 @@ using VlackApi.Models;
 namespace vlackapi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20180118204540_Refactor")]
+    partial class Refactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +40,7 @@ namespace vlackapi.Migrations
 
                     b.Property<long>("ChannelId");
 
-                    b.Property<string>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("User");
 
@@ -54,7 +55,7 @@ namespace vlackapi.Migrations
 
             modelBuilder.Entity("VlackApi.Models.Message", b =>
                 {
-                    b.HasOne("VlackApi.Models.Channel")
+                    b.HasOne("VlackApi.Models.Channel", "Channel")
                         .WithMany("Messages")
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade);
