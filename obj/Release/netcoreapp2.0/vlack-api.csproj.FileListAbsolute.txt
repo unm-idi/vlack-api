@@ -1,0 +1,10 @@
+/Users/michael/Sandbox/vlack-api/bin/Release/netcoreapp2.0/vlack-api.deps.json
+/Users/michael/Sandbox/vlack-api/bin/Release/netcoreapp2.0/vlack-api.runtimeconfig.json
+/Users/michael/Sandbox/vlack-api/bin/Release/netcoreapp2.0/vlack-api.runtimeconfig.dev.json
+/Users/michael/Sandbox/vlack-api/bin/Release/netcoreapp2.0/vlack-api.dll
+/Users/michael/Sandbox/vlack-api/bin/Release/netcoreapp2.0/vlack-api.pdb
+/Users/michael/Sandbox/vlack-api/obj/Release/netcoreapp2.0/vlack-api.csproj.CoreCompileInputs.cache
+/Users/michael/Sandbox/vlack-api/obj/Release/netcoreapp2.0/vlack-api.AssemblyInfoInputs.cache
+/Users/michael/Sandbox/vlack-api/obj/Release/netcoreapp2.0/vlack-api.AssemblyInfo.cs
+/Users/michael/Sandbox/vlack-api/obj/Release/netcoreapp2.0/vlack-api.dll
+/Users/michael/Sandbox/vlack-api/obj/Release/netcoreapp2.0/vlack-api.pdb

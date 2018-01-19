@@ -1,0 +1,5 @@
+/Users/michael/Sandbox/vlack-api
+--output-path=obj/Release/netcoreapp2.0/
+--application-name=vlack-api
+--content-root=/Users/michael/Sandbox/vlack-api
+--file=

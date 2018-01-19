@@ -31,7 +31,6 @@ namespace VlackApi
             services.AddCors();
             services.AddMvc();
             services.AddSignalR();
-            // services.AddDbContext<ApplicationContext>(options => options.UseSqlite("DataSource=Vlack.db"));
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
